@@ -1,0 +1,17 @@
+# Build outputs
+.next
+dist
+out
+build
+
+# Dependencies
+node_modules
+package-lock.json
+
+# Cache and logs
+.turbo
+.eslintcache
+*.log
+
+# Static assets
+public

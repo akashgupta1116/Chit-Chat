@@ -6,12 +6,19 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json,css}\"",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
-    "prettier": "^3.7.4",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "prettier": "3.7.4",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.1.18",
     "turbo": "^2.7.4",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "web": "^0.1.0",
+    "workspace": "^0.0.1-preview.2"
   },
   "engines": {
     "node": ">=18"
