@@ -1,9 +1,13 @@
 
 const Message = ({
-    messageInfo
+    messageInfo,
+    currentUser
+}: {
+    messageInfo: any;
+    currentUser: string
 }) => {
 
-    const mine = messageInfo.userName == "Rohit";
+    const mine = messageInfo.userName == currentUser;
     console.log("mine", mine)
     return (
         <div className={`flex ${mine ? "justify-end": "justify-start"} mt-1`}>

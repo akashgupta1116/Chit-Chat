@@ -1,22 +1,34 @@
 'use client';
 import React, { useState } from 'react';
 
-const Modal = () => {
+interface ModalProps {
+  modalBody: string;
+  submitBtn: string;
+  submitHandler: (val:string)=> void
+}
+
+const Modal = ({
+  modalBody,
+  submitBtn,
+  submitHandler
+}: ModalProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [inputName, setInputName] = useState<string>('');
 
-  const toggleModal = () => setIsOpen(!isOpen);
+  // const toggleModal = () => setIsOpen(!isOpen);
 
-  const handleNameSubmit = () => {};
-
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    submitHandler(inputName)
+  }
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center">
       <div className="max-w-md rounded-xl bg-white p-6 shadow-lg">
         <h1 className="text-xl font-semibold text-black">Enter your name</h1>
         <p className="mt-1 text-sm text-gray-500">
-          Enter your name to start chatting. This will be used to identify
+          {modalBody}
         </p>
-        <form onSubmit={handleNameSubmit} className="mt-4">
+        <form onSubmit={onSubmit} className="mt-4">
           <input
             autoFocus
             value={inputName}
@@ -26,9 +38,10 @@ const Modal = () => {
           />
           <button
             type="submit"
-            className="ml-auto mt-3 block cursor-pointer rounded-full bg-green-500 px-4 py-1.5 font-medium text-white"
+            disabled={!inputName.length}
+            className={`ml-auto mt-3 block cursor-pointer rounded-full ${!inputName.length ? "bg-gray-300": "bg-green-500"} px-4 py-1.5 font-medium text-white`}
           >
-            Continue
+            {submitBtn}
           </button>
         </form>
       </div>
